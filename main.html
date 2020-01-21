@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link href="main.css" rel="stylesheet" type="text/css">
+    <title>Doggie Breeds!</title>
 </head>
 <body>
-    
+    <header role="banner">
+        <h1>Dog Pictures by Breed!</h1>
+    </header>
+    <main>
+        <p>Love a particular kind of dog breed? Type the breed below and hit the button! You'll see a random picture of your fav puppy!</p>
+        <p><i>IMPORTANT: Enter the dog breed you want in lowercase letters. If there is no match, an error message will appear.</i></p>
+        <form class="breed-selector">
+            <input id="breed-input" type="text" placeholder="ex. corgi" name="dog-kind" aria-label="Dog Breed Input"></form></input>
+            <input type="submit" name="submit" value="Show Me A Picture!" aria-label="Submit Button"></input>
+        </form>
+        <section class="breed hidden">
+        </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
 </body>
 </html>
