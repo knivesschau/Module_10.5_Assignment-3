@@ -1,5 +1,4 @@
 function submitBreed() {
-    console.log("submitBreed ran!");
     $(".breed-selector").on("submit", function(event) {
         event.preventDefault(); 
         let breedInput = $("#breed-input").val();
@@ -8,7 +7,6 @@ function submitBreed() {
 }
 
 function getBreedImage(breedInput) {
-    console.log("getBreedImage ran!");
     fetch(`https://dog.ceo/api/breed/${breedInput}/images/random`)
     .then(response => response.json())
     .then(responseJson => {
@@ -23,7 +21,6 @@ function getBreedImage(breedInput) {
 }
 
 function breedReveal(responseJson) {
-    console.log("breedReveal ran!");
     console.log(responseJson);
     $(".breed").empty();
     $(".breed").append(`<img src="${responseJson.message}" alt="Dog Breed Image">`);
