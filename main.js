@@ -1,7 +1,7 @@
 function submitBreed() {
     console.log("submitBreed ran!");
     $(".breed-selector").on("submit", function(event) {
-        event.PreventDefault(); 
+        event.preventDefault(); 
         let breedInput = $("#breed-input").val();
         getBreedImage(breedInput);
     });
@@ -11,14 +11,22 @@ function getBreedImage(breedInput) {
     console.log("getBreedImage ran!");
     fetch(`https://dog.ceo/api/breed/${breedInput}/images/random`)
     .then(response => response.json())
-    .then(responseJson => breedReveal(responseJson))
-    .catch(error => alert("Error: The dog breed you entered does not match our records. Please try again."));
+    .then(responseJson => {
+        if (responseJson.status == "success") {
+            breedReveal(responseJson);
+        }
+        else {
+            throw responseJson;
+        }
+    })
+    .catch(error => alert(`The breed you entered does not match anything in our records. Please try again.`));
 }
 
 function breedReveal(responseJson) {
     console.log("breedReveal ran!");
+    console.log(responseJson);
     $(".breed").empty();
-    $(".breed").append(`<img src="${responseJson.message}"> alt="Dog Brreed Image">`);
+    $(".breed").append(`<img src="${responseJson.message}" alt="Dog Breed Image">`);
     $(".breed").removeClass("hidden");
 }
 
